@@ -74,8 +74,9 @@ app.directive('headerShrink', function($document) {
   }
 });
 
-app.controller('AppCtrl', function($scope, $ionicModal, $location, $ionicHistory, $ionicGesture, $window, $interval) {
+app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHistory, $ionicGesture, $window, $interval) {
 
+  // OPEN & CLOSE MENU
   $ionicModal.fromTemplateUrl('menu.html', {
     scope: $scope,
     animation: 'slide-in-left'
@@ -89,14 +90,6 @@ app.controller('AppCtrl', function($scope, $ionicModal, $location, $ionicHistory
 
   $scope.closeMenu = function() {
     $scope.modal.hide();
-  };
-
-  // $scope.openMenu = function() {
-  //   $location.path("#/menu");
-  // }
-
-  $scope.goBack = function() {
-    $ionicHistory.goBack();
   };
 
   var element = angular.element(document.querySelector('#eventPlaceholder'));
@@ -127,5 +120,21 @@ app.controller('AppCtrl', function($scope, $ionicModal, $location, $ionicHistory
   //     });
   //   }, element);
   // });
+
+  // HISTORY BACK
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
+  };
+
+  // POPUP AJOUT AU CARNET DE VOYAGE
+  $scope.add = function() {
+     var alertPopup = $ionicPopup.alert({
+       // title: 'Don\'t eat that!',
+       template: 'Cet élément a bien été ajouté à votre carnet de voyage'
+     });
+     alertPopup.then(function(res) {
+       console.log('action after closing alert');
+     });
+   };
 
 });

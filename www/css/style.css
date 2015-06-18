@@ -39,3 +39,38 @@
 .slide-in-right.ng-leave, .slide-in-right > .ng-leave {
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
+
+/* POP UP ALERT */
+.backdrop { background-color: rgba(0, 0, 0, 0.8); }
+.popup-container .popup { background-color: transparent; }
+.popup-head {
+  border-bottom: none;
+  background: url(../img/pin.png) no-repeat 50%;
+}
+.popup-body {
+  text-align: center;
+  color: #fff;
+}
+.popup-buttons {
+  background: url(../img/close.png) no-repeat 50%;
+}
+.popup-buttons .button.button-positive {
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
