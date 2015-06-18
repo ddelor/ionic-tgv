@@ -7,7 +7,9 @@
 }
 
 
-/* SLIDES EFFECTS */
+/*****************************/
+/*       SLIDES EFFECTS      */
+/*****************************/
 .slide-in-left {
   -webkit-transform: translateX(-100%);
     transform: translateX(-100%); }
@@ -40,7 +42,10 @@
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
 
-/* POP UP ALERT */
+
+/*****************************/
+/*        POP UP ALERT       */
+/*****************************/
 .backdrop { background-color: rgba(0, 0, 0, 0.8); }
 .popup-container .popup { background-color: transparent; }
 .popup-head {
@@ -58,6 +63,10 @@
   opacity: 0;
 }
 
+
+/*****************************/
+/*               */
+/*****************************/
 
 
 

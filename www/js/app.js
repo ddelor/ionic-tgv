@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic']);
+var app = angular.module('starter', ['ionic', 'ui.router']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,6 +29,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('toto', {
       url: '/toto',
       templateUrl: 'toto.html'
+    })
+    .state('carnets', {
+      url: '/carnets',
+      templateUrl: 'carnets.html',
+      controller: 'CarnetsCtrl'
+    })
+    .state('map', {
+      url: '/map',
+      templateUrl: 'map.html'
     });
 });
 
@@ -74,31 +83,53 @@ app.directive('headerShrink', function($document) {
   }
 });
 
-app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHistory, $ionicGesture, $window, $interval) {
+app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHistory, $ionicGesture, $window, $interval, $state) {
 
-  // OPEN & CLOSE MENU
+  // OPEN/CLOSE MENU & MAP
   $ionicModal.fromTemplateUrl('menu.html', {
     scope: $scope,
     animation: 'slide-in-left'
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.modalMenu = modal;
+  });
+
+  $ionicModal.fromTemplateUrl('map.html', {
+    scope: $scope,
+    animation: 'slide-in-right'
+  }).then(function(modal) {
+    $scope.modalMap = modal;
   });
 
   $scope.openMenu = function() {
-    $scope.modal.show();
+    $scope.modalMenu.show();
   };
-
   $scope.closeMenu = function() {
-    $scope.modal.hide();
+    $scope.modalMenu.hide();
   };
 
-  var element = angular.element(document.querySelector('#eventPlaceholder'));
+  $scope.openMap = function() {
+    $scope.modalMenu.hide();
+    $scope.modalMap.show();
+  };
+  $scope.closeMap = function() {
+    $scope.modalMap.hide();
+  };
+
+  var eventPlaceholder = angular.element(document.querySelector('#eventPlaceholder'));
+
   $ionicGesture.on('swiperight', function() {
-    $scope.modal.show();
-  }, element);
+    $scope.closeMap();
+    $scope.openMenu();
+  }, eventPlaceholder);
+
+  // to do : à désactiver sur certaines pages
+  $ionicGesture.on('swipeleft', function() {
+    $scope.closeMenu();
+    $scope.openMap();
+  }, eventPlaceholder);
 
   // $scope.lastEventCalled = 'Try to Drag the content up, down, left or rigth';
-  // var element = angular.element(document.querySelector('#eventPlaceholder'));
+  // var element = angular.element(document.querySelector('#menu-acces'));
   // var events = [{
   //   event: 'dragup',
   //   text: 'You dragged me UP!'
@@ -129,12 +160,34 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHisto
   // POPUP AJOUT AU CARNET DE VOYAGE
   $scope.add = function() {
      var alertPopup = $ionicPopup.alert({
-       // title: 'Don\'t eat that!',
+       title: '',
        template: 'Cet élément a bien été ajouté à votre carnet de voyage'
      });
      alertPopup.then(function(res) {
        console.log('action after closing alert');
      });
    };
+
+});
+
+app.controller('CarnetsCtrl', function($scope) {
+
+  $scope.items = [
+    { id: 0 },
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+    { id: 6 },
+    { id: 7 },
+    { id: 8 },
+    { id: 9 },
+    { id: 10 }
+  ];
+
+  $scope.onItemDelete = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+  };
 
 });

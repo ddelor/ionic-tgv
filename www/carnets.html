@@ -1,0 +1,20 @@
+<ion-view>
+    <ion-content header-shrink scroll-event-interval="5">
+      <div class="padding container">
+        <h1>MES CARNETS DE VOYAGE</h1>
+        <h2>attention d'ici normalement je ne peux pas ouvrir la carte</h2>
+        <a href="#/" nav-direction="back">retour à la home</a>
+        <p></p>
+
+        <ion-list>
+
+            <ion-item ng-repeat="item in items" item="item" class="item-remove-animate">
+                Item {{ item.id }}
+                <ion-option-button class="ion-close-circled" ng-click="onItemDelete(item)"></ion-option-button>
+            </ion-item>
+
+        </ion-list>
+
+      </div>
+    </ion-content>
+</ion-view>
