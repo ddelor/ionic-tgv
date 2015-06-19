@@ -70,11 +70,60 @@
 /*       SLIDER INTRO        */
 /*****************************/
 
-.tuto .scroll, .tuto .container, .tuto .my-slider { height: 100%; }
+/*.tuto .scroll, .tuto .container, .tuto .my-slider { height: 100%; }
 .my-slider .slider-pager { height: auto; }
 .my-slider .slider-pager .slider-pager-page {
   display: block;
   margin: 0 auto;
+}*/
+
+#custom-slider {
+  position: relative;
+  overflow: hidden;
+}
+.tuto .scroll, .tuto .container, .tuto #custom-slider { height: 100%; }
+.tuto .container { padding-top: 0 !important; }
+#custom-slider h1 { padding-top: 65px; }
+#custom-slider .slide {
+  height: 100%;
+  display: none;
+  background-color: plum;
+}
+#custom-slider .slide.active { display: block; }
+
+.paginator {
+  position: absolute;
+  bottom: 20px; left: 0; right: 0;
+  text-align: center;
+}
+.paginator a { opacity: 0.5; }
+.paginator a.active { opacity: 1; }
+
+/* ANIMATION */
+@-webkit-keyframes moveFromBottomFade {
+  from { opacity: 0.3; -webkit-transform: translateY(100%); }
+}
+@keyframes moveFromBottomFade {
+  from { opacity: 0.3; -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+
+@-webkit-keyframes moveToTopFade {
+  from { }
+  to { opacity: 0.3; -webkit-transform: translateY(-100%); }
+}
+@keyframes moveToTopFade {
+  from { }
+  to { opacity: 0.3; -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+.fade-from-bottom.active {
+  -webkit-animation: moveFromBottomFade .7s ease both;
+  animation: moveFromBottomFade .7s ease both;
+}
+
+.fade-from-bottom.ng-hide {
+  -webkit-animation: moveToTopFade .7s ease both;
+  animation: moveToTopFade .7s ease both;
 }
 
 

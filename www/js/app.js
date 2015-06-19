@@ -44,7 +44,8 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     })
     .state('tuto', {
       url: '/tuto',
-      templateUrl: 'tuto.html'
+      templateUrl: 'tuto.html',
+      controller: 'TutoCtrl'
     })
     .state('list', {
       url: '/list',
@@ -129,16 +130,16 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHisto
 
   var eventPlaceholder = angular.element(document.querySelector('#eventPlaceholder'));
 
-  // $ionicGesture.on('swiperight', function() {
-  //   $scope.closeMap();
-  //   $scope.openMenu();
-  // }, eventPlaceholder);
+  $ionicGesture.on('swiperight', function() {
+    $scope.closeMap();
+    $scope.openMenu();
+  }, eventPlaceholder);
 
   // to do : à désactiver sur certaines pages
-  // $ionicGesture.on('swipeleft', function() {
-  //   $scope.closeMenu();
-  //   $scope.openMap();
-  // }, eventPlaceholder);
+  $ionicGesture.on('swipeleft', function() {
+    $scope.closeMenu();
+    $scope.openMap();
+  }, eventPlaceholder);
 
   // $scope.lastEventCalled = 'Try to Drag the content up, down, left or rigth';
   // var element = angular.element(document.querySelector('#menu-acces'));
@@ -215,3 +216,51 @@ app.controller('ListCtrl', function($scope) {
   }
 
 });
+
+app.controller('TutoCtrl', function($scope, $ionicGesture, $state) {
+
+  $scope.currentIndex = 0;
+
+  $scope.slides = [
+    { id: 0 },
+    { id: 1 },
+    { id: 2 }
+  ];
+
+  $scope.goToSlide = function(index) {
+    $scope.currentIndex = index;
+  };
+
+  var eventPlaceholder = angular.element(document.querySelector('#custom-slider'));
+  var newIndex;
+
+  $ionicGesture.on('swipeup', function() {
+    newIndex = $scope.currentIndex + 1;
+    if (newIndex >= 2) {
+      newIndex = 2;
+    }
+    $scope.$apply(function () {
+      $scope.currentIndex = newIndex;
+    });
+  }, eventPlaceholder);
+
+  // $ionicGesture.on('swipedown', function() {
+  //   newIndex = $scope.currentIndex - 1;
+  //   if (newIndex <= 0) {
+  //     newIndex = 0;
+  //   }
+  //   $scope.$apply(function () {
+  //     $scope.currentIndex = newIndex;
+  //   });
+  // }, eventPlaceholder);
+
+});
+
+
+
+
+
+
+
+
+

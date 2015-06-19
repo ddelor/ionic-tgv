@@ -1,7 +1,9 @@
 <ion-view class="tuto">
     <ion-content header-shrink scroll-event-interval="5">
       <div class="container">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" slide-interval="3000" does-continue="true" class="my-slider">
+
+        <!-- IONIC SLIDE BOX -->
+        <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" slide-interval="3000" does-continue="true" class="my-slider">
           <ion-slide ng-animate=" 'animate' ">
             <div class="box blue"><h1>BLUE</h1></div>
           </ion-slide>
@@ -11,7 +13,19 @@
           <ion-slide ng-animate=" 'animate' ">
             <div class="box pink"><h1>PINK</h1></div>
           </ion-slide>
-        </ion-slide-box>
+        </ion-slide-box> -->
+
+        <!-- CUSTOM SLIDER -->
+        <div id="custom-slider">
+          <div class="slide fade-from-bottom" ng-repeat="slide in slides" ng-show="currentIndex == $index" ng-class=" currentIndex == $index ? 'active' : '' ">
+            <h1>SLIDE {{ $index }}</h1>
+          </div>
+          <ul class="paginator">
+            <li ng-repeat="slide in slides">
+              <a href ng-click="goToSlide($index)" ng-class=" currentIndex == $index ? 'active' : '' ">{{ $index }}</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </ion-content>
 </ion-view>
