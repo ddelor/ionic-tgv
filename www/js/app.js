@@ -18,7 +18,10 @@ app.run(function($ionicPlatform) {
   });
 });
 
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.views.transition('none');
+
   $urlRouterProvider.otherwise('/')
 
   $stateProvider
