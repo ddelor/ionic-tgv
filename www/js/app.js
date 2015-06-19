@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'ui.router']);
+var app = angular.module('starter', ['ionic', 'ngAnimate', 'ui.router']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,6 +38,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('map', {
       url: '/map',
       templateUrl: 'map.html'
+    })
+    .state('tuto', {
+      url: '/tuto',
+      templateUrl: 'tuto.html'
+    })
+    .state('list', {
+      url: '/list',
+      templateUrl: 'list.html',
+      controller: 'ListCtrl'
     });
 });
 
@@ -117,16 +126,16 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHisto
 
   var eventPlaceholder = angular.element(document.querySelector('#eventPlaceholder'));
 
-  $ionicGesture.on('swiperight', function() {
-    $scope.closeMap();
-    $scope.openMenu();
-  }, eventPlaceholder);
+  // $ionicGesture.on('swiperight', function() {
+  //   $scope.closeMap();
+  //   $scope.openMenu();
+  // }, eventPlaceholder);
 
   // to do : à désactiver sur certaines pages
-  $ionicGesture.on('swipeleft', function() {
-    $scope.closeMenu();
-    $scope.openMap();
-  }, eventPlaceholder);
+  // $ionicGesture.on('swipeleft', function() {
+  //   $scope.closeMenu();
+  //   $scope.openMap();
+  // }, eventPlaceholder);
 
   // $scope.lastEventCalled = 'Try to Drag the content up, down, left or rigth';
   // var element = angular.element(document.querySelector('#menu-acces'));
@@ -189,5 +198,17 @@ app.controller('CarnetsCtrl', function($scope) {
   $scope.onItemDelete = function(item) {
     $scope.items.splice($scope.items.indexOf(item), 1);
   };
+
+});
+
+app.controller('ListCtrl', function($scope) {
+
+  $scope.boxes = [
+    { id: 0 }
+  ];
+
+  $scope.showBox = function() {
+    $scope.revealBox = true;
+  }
 
 });

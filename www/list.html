@@ -1,0 +1,9 @@
+<ion-view>
+    <ion-content header-shrink scroll-event-interval="5">
+      <div class="padding container">
+        <h1>MON VOYAGE</h1>
+        <button class="button button-block" ng-click="showBox()">Afficher un contenu</button>
+        <div class="box" ng-repeat="box in boxes" ng-show="revealBox"></div>
+      </div>
+    </ion-content>
+</ion-view>
