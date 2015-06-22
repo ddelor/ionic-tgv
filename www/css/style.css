@@ -6,9 +6,17 @@
   padding-top: 65px !important;
 }
 
+.box {
+  width: 100%;
+  height: 200px;
+  background-color: red;
+  margin-top: 10px;
+  position: relative;
+}
+
 
 /*****************************/
-/*       SLIDES EFFECTS      */
+/*   MODALS SLIDES EFFECTS   */
 /*****************************/
 
 .slide-in-left {
@@ -70,13 +78,6 @@
 /*       SLIDER INTRO        */
 /*****************************/
 
-/*.tuto .scroll, .tuto .container, .tuto .my-slider { height: 100%; }
-.my-slider .slider-pager { height: auto; }
-.my-slider .slider-pager .slider-pager-page {
-  display: block;
-  margin: 0 auto;
-}*/
-
 #custom-slider {
   position: relative;
   overflow: hidden;
@@ -99,136 +100,40 @@
 .paginator a { opacity: 0.5; }
 .paginator a.active { opacity: 1; }
 
-/* ANIMATION */
-@-webkit-keyframes moveFromBottomFade {
-  from { opacity: 0.3; -webkit-transform: translateY(100%); }
-}
-@keyframes moveFromBottomFade {
-  from { opacity: 0.3; -webkit-transform: translateY(100%); transform: translateY(100%); }
-}
-
-@-webkit-keyframes moveToTopFade {
-  from { }
-  to { opacity: 0.3; -webkit-transform: translateY(-100%); }
-}
-@keyframes moveToTopFade {
-  from { }
-  to { opacity: 0.3; -webkit-transform: translateY(-100%); transform: translateY(-100%); }
-}
-
-.fade-from-bottom.active {
-  -webkit-animation: moveFromBottomFade .7s ease both;
-  animation: moveFromBottomFade .7s ease both;
-}
-
-.fade-from-bottom.ng-hide {
-  -webkit-animation: moveToTopFade .7s ease both;
-  animation: moveToTopFade .7s ease both;
-}
-
 
 /*****************************/
-/*      LIST ANIMATION       */
+/*        ANIMATIONS         */
 /*****************************/
 
-.box {
-  width: 100%;
-  height: 200px;
-  background-color: red;
-  margin-top: 10px;
-  position: relative;
+.bounce-in-out.ng-enter {
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
 }
 
-.box.ng-enter {
-    -webkit-animation-name: bounceInUp;
-    animation-name: bounceInUp;
-    -webkit-animation-duration: 0.8s;
-    animation-duration: 0.8s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    display: block;
-    position: relative;
+.bounce-in-out.ng-leave {
+  -webkit-animation-name: bounceOutUp;
+  animation-name: bounceOutUp;
 }
 
-@-webkit-keyframes bounceInUp {
-  0%, 60%, 75%, 90%, 100% {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 2000px, 0);
-    transform: translate3d(0, 2000px, 0);
-  }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, -20px, 0);
-    transform: translate3d(0, -20px, 0);
-  }
-
-  75% {
-    -webkit-transform: translate3d(0, 10px, 0);
-    transform: translate3d(0, 10px, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(0, -5px, 0);
-    transform: translate3d(0, -5px, 0);
-  }
-
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+.flip-in-out.ng-enter {
+  -webkit-animation-name: flipInY;
+  animation-name: flipInY;
 }
 
-@keyframes bounceInUp {
-  0%, 60%, 75%, 90%, 100% {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 2000px, 0);
-    transform: translate3d(0, 2000px, 0);
-  }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(0, -20px, 0);
-    transform: translate3d(0, -20px, 0);
-  }
-
-  75% {
-    -webkit-transform: translate3d(0, 10px, 0);
-    transform: translate3d(0, 10px, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(0, -5px, 0);
-    transform: translate3d(0, -5px, 0);
-  }
-
-  100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+.flip-in-out.ng-leave {
+  -webkit-animation-name: flipOutY;
+  animation-name: flipOutY;
 }
 
+.fade-in-up.active {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
 
-/*****************************/
-/*       VIEW ANIMATION      */
-/*****************************/
-
-.fade-in-out { transition: 0.5s linear all; }
-.fade-in-out.ng-enter { opacity: 0; }
-.fade-in-out.ng-enter.ng-enter-active { opacity: 1; }
-.fade-in-out.ng-leave { opacity: 1; }
-.fade-in-out.ng-leave.ng-leave-active { opacity: 0; }
-
+.fade-in-up.ng-hide {
+  -webkit-animation-name: fadeOutUp;
+  animation-name: fadeOutUp;
+}
 
 
 

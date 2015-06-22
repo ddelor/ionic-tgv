@@ -21,6 +21,7 @@ app.run(function($ionicPlatform) {
 app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   $ionicConfigProvider.views.transition('none');
+  $ionicConfigProvider.views.maxCache(0);
 
   $urlRouterProvider.otherwise('/')
 
