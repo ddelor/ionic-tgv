@@ -28,11 +28,11 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'home.html'
+      templateUrl: 'home.html',
     })
-    .state('toto', {
-      url: '/toto',
-      templateUrl: 'toto.html'
+    .state('content', {
+      url: '/content',
+      templateUrl: 'content.html',
     })
     .state('carnets', {
       url: '/carnets',
@@ -181,6 +181,18 @@ app.controller('AppCtrl', function($scope, $ionicModal, $ionicPopup, $ionicHisto
        console.log('action after closing alert');
      });
    };
+
+  // DETECT CURRENT STATE
+  $scope.isContent = false;
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    var currentState = $state.current.name;
+
+    if (currentState == "content") {
+      $scope.isContent = true;
+    } else {
+      $scope.isContent = false;
+    }
+  });
 
 });
 
